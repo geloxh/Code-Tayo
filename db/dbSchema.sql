@@ -51,5 +51,21 @@ CREATE TABLE login_attempts (
 
 -- 
 CREATE TABLE programming_language (
+    programming_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    icon VARCHAR(50) DEFAULT 'fas fa-holder',
+    color VARCHAR(7) DEFAULT '#007bff',
+    position INT DEFAULT 0,
+    is_active BOOLEAN DEFAULT TRUE,
+    permissions JSON,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON  UPDATGE CURRENT_TIMESTAMP,
+    INDEX idx_position (position),
+    INDEX idx_active (is_active)
+);
 
+CREATE TABLE forums (
+    forum_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id 
 )
