@@ -9,7 +9,7 @@ class AuthController {
         $this->auth = new AuthService();
     }
 
-    // ─── Show Login Page ──────────────────────────────────
+    // ─── Show Login Page ─── //
     public function showLogin(): void {
         if ($this->auth->isLoggedIn()) {
             $this->redirect('/dashboard');
@@ -21,7 +21,7 @@ class AuthController {
         require_once 'views/auth/login.php';
     }
 
-    // ─── Handle Login ─────────────────────────────────────
+    // ─── Handle Login ───
     public function login(): void {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             $this->redirect('/login');
@@ -80,13 +80,13 @@ class AuthController {
         $this->jsonResponse($result);
     }
 
-    // ─── Handle Logout ────────────────────────────────────
+    // ─── Handle Logout ───
     public function logout(): void {
         $this->auth->logout();
         $this->redirect('/login');
     }
 
-    // ─── Forgot Password ──────────────────────────────────
+    // ─── Forgot Password ───
     public function forgotPassword(): void {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             require_once 'views/auth/forgot-password.php';
@@ -98,7 +98,7 @@ class AuthController {
         $this->jsonResponse($result);
     }
 
-    // ─── Reset Password ───────────────────────────────────
+    // ─── Reset Password ─── 
     public function resetPassword(): void {
         $token = $_GET['token'] ?? '';
 
@@ -112,7 +112,7 @@ class AuthController {
         $this->jsonResponse($result);
     }
 
-    // ─── Middleware: Require Login ────────────────────────
+    // ─── Middleware: Require Login ───
     public function requireAuth(): void {
         if (!$this->auth->isLoggedIn()) {
             if (!$this->auth->checkRememberMe(
